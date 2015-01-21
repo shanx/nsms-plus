@@ -22,7 +22,7 @@
 
       {% for count in counts %}
       <tr>
-	<td>{{ count.start|date:"F Y" }}</td>
+	<td>{{ count.created|date:"F Y" }}</td>
 	<td class="count">{{ count.incoming|intcomma }}</td>
 	<td class="count">{{ count.outgoing|intcomma }}</td>
 	<td class="count">{{ count.total|intcomma }}</td>
@@ -85,8 +85,8 @@
                 stacking: 'normal',
                 name: 'Incoming',
                 data: [
-                    {% for count in incoming_counts %}
-                    [Date.UTC( {{ count.created.year }},  {{ count.created.month}}-1 , {{ count.created.day }} ), {{ count.created_on_count }}  ]
+                    {% for count in counts %}
+                    [Date.UTC( {{ count.created.year }},  {{ count.created.month}}-1 , {{ count.created.day }} ), {{ count.incoming }}  ]
                     {% if not forloop.last %},{% endif %}
                     {% endfor %}
                 ]
@@ -97,8 +97,8 @@
                 stacking: 'normal',
                 name: 'Outgoing',
                 data: [
-                    {% for count in outgoing_counts %}
-                    [Date.UTC( {{ count.created.year }},  {{ count.created.month}}-1 , {{ count.created.day }} ), {{ count.created_on_count }}  ]
+                    {% for count in counts %}
+                    [Date.UTC( {{ count.created.year }},  {{ count.created.month}}-1 , {{ count.created.day }} ), {{ count.outgoing }}  ]
                     {% if not forloop.last %},{% endif %}
                     {% endfor %}
                 ]
