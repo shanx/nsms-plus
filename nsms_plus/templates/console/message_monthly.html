@@ -20,7 +20,7 @@
 	</tr>
       </thead>
 
-      {% for count in counts %}
+      {% for count in counts reversed %}
       <tr>
 	<td>{{ count.created|date:"F Y" }}</td>
 	<td class="count">{{ count.incoming|intcomma }}</td>
